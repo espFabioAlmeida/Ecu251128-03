@@ -1,0 +1,9 @@
+{
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "*.ino": "cpp",
+        "16f1936.h": "c",
+        "18f4620.h": "c"
+    }
+}
