@@ -29,6 +29,7 @@ CONSTANTES
 ==============================================================================*/
 #define on      output_high
 #define off     output_low  
+#define toggle  output_toggle
 #ifndef boolean
     #define boolean int1
 #endif  
