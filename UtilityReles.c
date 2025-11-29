@@ -11,18 +11,18 @@ void acionamentoMotor(unsigned int motor) {
 
     switch(motor) {
         case MOTOR_DESLIGA:
-            off(REMOTOR_H);
-            off(REMOTOR_AH);
+            off(MOTOR_H);
+            off(MOTOR_AH);
             break;
         
         case MOTOR_AVANCA:           
-            off(REMOTOR_AH);
-            on(REMOTOR_H);
+            off(MOTOR_AH);
+            on(MOTOR_H);
             break;
 
         case MOTOR_RECUA:   
-            off(REMOTOR_H);        
-            on(REMOTOR_AH); 
+            off(MOTOR_H);        
+            on(MOTOR_AH); 
             break;
     }
 
