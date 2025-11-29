@@ -40,8 +40,13 @@ enum LISTA_OPERACAO{
     OPERACAO_STANDBY,
     OPERACAO_RL1,
     OPERACAO_RL2,
-    OPERACAO_AGUARDA_RL2,
     OPERACAO_ACELERADOR
+};
+
+enum LISTA_MOTOR {
+    MOTOR_DESLIGA,
+    MOTOR_AVANCA,
+    MOTOR_RECUA
 };
 /*==============================================================================
 DEFINIÇÕES DOS PINOS                                       
@@ -58,7 +63,7 @@ DEFINIÇÕES DOS PINOS
 #define IN5             PIN_C4
 
 #define LED_CPU         PIN_C3
-#define LED_COM         PIN_D7
+#define LED_ON          PIN_D7
 /*==============================================================================
 VARIAVEIS
 ==============================================================================*/   
@@ -105,7 +110,8 @@ void main() {
 WHILE TRUE
 ==============================================================================*/  
     while(true) {      
-
+        leituraEntradasDigitais();
+        acionamentoReles();
     }
 }
 /*==============================================================================

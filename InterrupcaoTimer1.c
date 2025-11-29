@@ -20,7 +20,17 @@ void tarefas10ms() {
 TAREFAS 100MS
 ==============================================================================*/
 void tarefas100ms() {
-   
+    if(contadorEntreReles) {
+        if(contadorEntreReles < CONTADOR_ENTRE_RELES) {
+            contadorEntreReles ++;
+        }        
+    }
+
+    if(contadorRele2) {
+        if(contadorRele2 < CONTADOR_RELE2) {
+            contadorRele2 ++;
+        }        
+    }
 }
 /*==============================================================================
 TAREFAS 1S
