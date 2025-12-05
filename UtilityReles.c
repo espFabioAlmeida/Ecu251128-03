@@ -28,6 +28,17 @@ void acionamentoMotor(unsigned int motor) {
 
 }
 /*==============================================================================
+MOTOR EM HOME
+==============================================================================*/
+void motorEmHome() {
+    if(flagHomeAcelerador) {
+        acionamentoMotor(MOTOR_DESLIGA);
+    }
+    else {
+        acionamentoMotor(MOTOR_RECUA);
+    }
+}
+/*==============================================================================
 ACIONAMENTO RELES
 ==============================================================================*/
 void acionamentoReles() {
@@ -44,6 +55,7 @@ void acionamentoReles() {
                     contadorRele2 = 1;
                     operacao = OPERACAO_RL2;
                 }
+                motorEmHome();
                 break;
 
             case OPERACAO_RL2:
@@ -51,6 +63,16 @@ void acionamentoReles() {
                 if(contadorRele2 >= CONTADOR_RELE2) {
                     off(RELE2);
                     contadorRele2 = 0;
+                    contadorAquecimento = 1;
+                    operacao = OPERACAO_AQUECIMENTO;
+                }
+                motorEmHome();
+                break;
+
+            case OPERACAO_AQUECIMENTO:
+                motorEmHome();
+                if(contadorAquecimento >= CONTADOR_AQUECIMENTO) {
+                    contadorAquecimento = 0;
                     operacao = OPERACAO_ACELERADOR;
                 }
                 break;
@@ -63,10 +85,31 @@ void acionamentoReles() {
                     acionamentoMotor(MOTOR_AVANCA);
                 }
                 break;
+
+            case OPERACAO_DESAQUECIMENTO:
+                motorEmHome();
+                if(contadorDesaquecimento >= CONTADOR_DESAQUECIMENTO) {
+                    contadorDesaquecimento = 0;
+                    flagOperacao = false;
+                }
+
+                if(flagAcionamento) {
+                    contadorDesaquecimento = 0;
+                    operacao = OPERACAO_ACELERADOR;
+                }
+
+                break;
         }
 
-        if(!flagSeguranca || !flagAcionamento) {
+        if(!flagSeguranca) {
             flagOperacao = false;
+        }
+
+        if(!flagAcionamento) {
+            if(operacao == OPERACAO_AQUECIMENTO || operacao == OPERACAO_ACELERADOR) {
+                operacao = OPERACAO_DESAQUECIMENTO;
+                contadorDesaquecimento = 1;
+            }           
         }
 
         return;
@@ -76,12 +119,7 @@ void acionamentoReles() {
     off(RELE2);
     off(LED_ON);
 
-    if(flagHomeAcelerador) {
-        acionamentoMotor(MOTOR_DESLIGA);
-    }
-    else {
-        acionamentoMotor(MOTOR_RECUA);
-    }
+    motorEmHome();
 
     if(reentrada) {
         if(!flagAcionamento) {

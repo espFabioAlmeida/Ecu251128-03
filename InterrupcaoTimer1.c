@@ -31,6 +31,18 @@ void tarefas100ms() {
             contadorRele2 ++;
         }        
     }
+
+    if(contadorAquecimento) {
+        if(contadorAquecimento < CONTADOR_AQUECIMENTO) {
+            contadorAquecimento ++;
+        }
+    }
+
+    if(contadorDesaquecimento) {
+        if(contadorDesaquecimento < CONTADOR_DESAQUECIMENTO) {
+            contadorDesaquecimento ++;
+        }
+    }
 }
 /*==============================================================================
 TAREFAS 1S

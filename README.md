@@ -17,6 +17,6 @@ RELE4: Saída Anti-Horário (Recuo) do Motor <br>
 # Escopo
 Projeto feito com a placa CPA-02 V1 <br>
 A placa monitora a entrada de segurança, com ela desligada deve ficar tudo desligado e a entrada acionamento ignorada. <br>
-Com a segurança ativada a placa monitora a entrada acionamento. Quando acionada aciona a SAÍDA 1 em retenção. E após 5 segundos aciona a SAÍDA 2, essa saída fica aciona por um tempo fixo que será calibrando em campo, por enquanto 3 segundos. Após o tempo se esgotar a SAÍDA 2 é desligada e a placa aciona o motor em AVANÇO até atingir o fim de curso. <br>
-Caso a entrada de acionamento desligue a placa deve retornar para HOME e as saídas 1 e 2 desligam. <br>
+Com a segurança ativada a placa monitora a entrada acionamento. Quando acionada aciona a SAÍDA 1 em retenção. E após 5 segundos aciona a SAÍDA 2, essa saída fica aciona por um tempo fixo que será calibrando em campo, por enquanto 3 segundos. Após o tempo se esgotar a SAÍDA 2 é desligada. E começa uma nova contagem de 2 minutos para a placa acionar o motor em AVANÇO até atingir o fim de curso. <br>
+Caso a entrada de acionamento desligue a placa deve retornar para HOME e aguardar 2 minutos para as saídas 1 e 2 desligarem. <br>
 Caso a entrada de segurança desligue no meio do processo as saídas 1 e 2 desligam e a placa retorna para HOME. Porém caso retorne, é necessário um novo pulso no acionamento.

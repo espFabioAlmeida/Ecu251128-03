@@ -37,11 +37,16 @@ CONSTANTES
 #define CONTADOR_ENTRE_RELES 50
 #define CONTADOR_RELE2 30
 
+#define CONTADOR_AQUECIMENTO 1200
+#define CONTADOR_DESAQUECIMENTO 1200
+
 enum LISTA_OPERACAO{
     OPERACAO_STANDBY,
     OPERACAO_RL1,
     OPERACAO_RL2,
-    OPERACAO_ACELERADOR
+    OPERACAO_AQUECIMENTO,
+    OPERACAO_ACELERADOR,
+    OPERACAO_DESAQUECIMENTO
 };
 
 enum LISTA_MOTOR {
@@ -82,6 +87,10 @@ unsigned int
 
     contadorEntreReles = 0,
     contadorRele2 = 0;
+
+unsigned int16
+    contadorAquecimento = 0,
+    contadorDesaquecimento = 0;
 /*==============================================================================
 VARIAVEIS ARRAY
 ==============================================================================*/
